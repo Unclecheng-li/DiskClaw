@@ -3200,16 +3200,22 @@ function renderClientScript() {
           '<div class="log-list" id="logList"></div>' +
           '<section class="card" style="margin-top:20px;"><h2 class="section-title">关于我们</h2><p class="section-copy">磁盘清理大虾正在从开发态工作台演进为面向普通用户的桌面产品，当前版本重点保证扫描、计划、清理和恢复链路稳定可用。</p></section>';
 
+        const activeSection = getActiveSettingsSection();
+        const sectionMap = {
+          basic: { title: "基础设置", copy: "自动扫描、通知和默认目录。", body: basicBody },
+          llm: { title: "LLM 配置", copy: "第三方模型接入与密钥。", body: llmBody },
+          rules: { title: "规则配置", copy: "扫描范围、白名单、黑名单与阈值。", body: rulesBody },
+          system: { title: "系统设置", copy: "窗口、语言、更新与启动项。", body: systemBody },
+          data: { title: "数据管理", copy: "备份、恢复和重置配置。", body: dataBody },
+          schedule: { title: "计划任务", copy: "系统计划与用户自定义计划。", body: scheduleBody },
+          update: { title: "应用更新", copy: "版本检查、下载地址与更新说明。", body: updateBody },
+          advanced: { title: "高级设置", copy: "日志、调试与关于信息。", body: advancedBody }
+        };
+        const current = sectionMap[activeSection] || sectionMap.basic;
+
         return [
           '<section class="settings-grid">',
-          renderSettingSection("basic", "基础设置", "自动扫描、通知和默认目录。", basicBody),
-          renderSettingSection("llm", "LLM 配置", "第三方模型接入与密钥。", llmBody),
-          renderSettingSection("rules", "规则配置", "扫描范围、白名单、黑名单与阈值。", rulesBody),
-          renderSettingSection("system", "系统设置", "窗口、语言、更新与启动项。", systemBody),
-          renderSettingSection("data", "数据管理", "备份、恢复和重置配置。", dataBody),
-          renderSettingSection("schedule", "计划任务", "系统计划与用户自定义计划。", scheduleBody),
-          renderSettingSection("update", "应用更新", "版本检查、下载地址与更新说明。", updateBody),
-          renderSettingSection("advanced", "高级设置", "日志、调试与关于信息。", advancedBody),
+          renderSettingSection(activeSection, current.title, current.copy, current.body),
           '</section>'
         ].join('');
       }
