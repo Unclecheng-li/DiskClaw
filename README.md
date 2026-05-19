@@ -13,6 +13,8 @@
 
 <br>
 
+<img width="200" height="129" alt="DisClaw logo" src="https://github.com/user-attachments/assets/59956242-a60e-4cac-aded-b0fb68d215b8" />
+
 **不是清理脚本，是可运行的桌面 AI 清理 Agent。**
 
 本地扫描 → 风险分级 → LLM 智能规划 → 隔离区执行，
