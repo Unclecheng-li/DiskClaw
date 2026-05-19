@@ -21,7 +21,7 @@
 [快速开始](#快速开始) · [能力速览](#它能做什么) · [架构设计](#-架构) · [API 参考](#-api-参考) · [版本路线](#️-版本路线)
 
 </div>
-
+<img width="1444" height="885" alt="DiskClaw" src="https://github.com/user-attachments/assets/4ccef4f4-b06a-4f00-b620-4ec7684ec487" />
 ---
 
 ## 它能做什么
