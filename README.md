@@ -22,7 +22,7 @@
 
 </div>
 
-<img width="2000" height="1294" alt="DisClaw logo" src="https://github.com/user-attachments/assets/59956242-a60e-4cac-aded-b0fb68d215b8" />
+<img width="200" height="129" alt="DisClaw logo" src="https://github.com/user-attachments/assets/59956242-a60e-4cac-aded-b0fb68d215b8" />
 
 ---
 
