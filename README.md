@@ -21,7 +21,8 @@
 [快速开始](#快速开始) · [能力速览](#它能做什么) · [架构设计](#-架构) · [API 参考](#-api-参考) · [版本路线](#️-版本路线)
 
 </div>
-<img width="1444" height="885" alt="DiskClaw" src="https://github.com/user-attachments/assets/4ccef4f4-b06a-4f00-b620-4ec7684ec487" />
+
+<img width="2000" height="1294" alt="DisClaw logo" src="https://github.com/user-attachments/assets/59956242-a60e-4cac-aded-b0fb68d215b8" />
 
 ---
 
@@ -38,7 +39,7 @@ DiskClaw 自动执行：
   LLM 规划:   将分析结果发给 AI，生成用户能看懂的清理建议和优先级
   清理执行:  隔离区（默认）、归档、回收站、永久删除、DryRun — 五种模式可选
 ```
-
+<img width="1444" height="885" alt="DiskClaw" src="https://github.com/user-attachments/assets/4ccef4f4-b06a-4f00-b620-4ec7684ec487" />
 适用于普通用户的日常磁盘清理、开发者工作目录治理、企业 IT 磁盘健康巡检等场景。
 
 ---
