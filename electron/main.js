@@ -7,6 +7,7 @@ import { startDiskClawServer } from "../src/startServer.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const iconPath = path.join(__dirname, "icon.png");
+const trayIconPath = path.join(__dirname, "icon.ico");
 const preloadPath = path.join(__dirname, "preload.js");
 
 let mainWindow = null;
@@ -287,8 +288,7 @@ async function refreshTrayPresentation() {
   }
 
   const snapshot = getActiveTaskSnapshot();
-  const trayIcon = await buildTrayIconDataUrl(snapshot);
-  tray.setImage(nativeImage.createFromDataURL(trayIcon));
+  tray.setImage(nativeImage.createFromPath(trayIconPath));
   tray.setToolTip(`磁盘清理大虾 · ${snapshot.label}${snapshot.active ? ` · ${snapshot.detail}` : ""}`);
   tray.setContextMenu(buildTrayContextMenu(snapshot));
 }
@@ -395,7 +395,7 @@ async function createMainWindow() {
   Menu.setApplicationMenu(buildAppMenu(windowStateStore));
 
   if (!tray) {
-    tray = new Tray(nativeImage.createFromPath(iconPath));
+    tray = new Tray(nativeImage.createFromPath(trayIconPath));
     tray.setToolTip("磁盘清理大虾");
     tray.on("click", () => {
       showMainWindow();

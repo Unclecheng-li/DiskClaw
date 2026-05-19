@@ -443,36 +443,19 @@
     }
 
     .hero-kpis {
-      width: min(780px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      display: none;
     }
 
     .hero-kpi-card {
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(226, 232, 240, 0.92);
-      box-shadow: var(--shadow-soft);
-      text-align: left;
+      display: none;
     }
 
     .hero-kpi-card strong {
-      display: block;
-      margin-top: 10px;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      display: none;
     }
 
     .hero-kpi-card span {
-      display: block;
-      margin-top: 8px;
-      color: var(--text-soft);
-      font-size: 13px;
-      line-height: 1.7;
+      display: none;
     }
 
     .hero-logo {
@@ -584,6 +567,13 @@
       background:
         radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.86)),
         linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(59, 130, 246, 0.12));
+      box-shadow:
+        0 28px 60px rgba(16, 185, 129, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-orb.scan-button:hover .hero-orb-label {
+      color: var(--green-deep);
     }
 
     .hero-orb.progress {
@@ -614,27 +604,27 @@
 
     .hero-orb-state {
       display: grid;
-      gap: 8px;
+      gap: 0;
       justify-items: center;
+      text-align: center;
+      max-width: 168px;
     }
 
     .hero-orb-mark {
-      font-size: 34px;
-      font-weight: 700;
-      color: var(--green-deep);
+      display: none;
     }
 
     .hero-orb-label {
-      font-size: 17px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 800;
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
     }
 
     .hero-orb-note {
-      color: var(--text-soft);
-      font-size: 13px;
-      line-height: 1.5;
+      display: none;
     }
 
     .target-row {
@@ -663,7 +653,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .label {
@@ -676,7 +666,7 @@
 
     .label-inline {
       color: var(--text-soft);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -741,7 +731,7 @@
 
     .settings-shell {
       display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
+      grid-template-columns: 280px minmax(0, 1fr);
       align-items: start;
       gap: 18px;
     }
@@ -760,7 +750,7 @@
     }
 
     .settings-nav-card {
-      padding: 18px;
+      padding: 16px;
     }
 
     .settings-nav-title {
@@ -774,16 +764,16 @@
 
     .settings-nav-list {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
     .settings-nav-item {
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
+      gap: 14px;
+      padding: 14px 14px;
+      border-radius: 16px;
       background: transparent;
       color: var(--text);
       text-align: left;
@@ -802,9 +792,9 @@
     }
 
     .settings-nav-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -833,12 +823,13 @@
 
     .settings-nav-text {
       display: grid;
-      gap: 4px;
+      gap: 3px;
     }
 
     .settings-nav-label {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
+      line-height: 1.2;
     }
 
     .settings-nav-copy {
@@ -849,23 +840,28 @@
 
     .settings-panel {
       min-width: 0;
+      width: 100%;
     }
 
     .settings-section {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .settings-section-header {
-      padding: 18px 20px;
-      border-radius: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.06));
       border: 1px solid rgba(16, 185, 129, 0.12);
       box-shadow: var(--shadow-soft);
+      position: sticky;
+      top: 16px;
+      z-index: 2;
+      backdrop-filter: blur(8px);
     }
 
     .settings-section-kicker {
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       color: var(--green-deep);
       font-size: 12px;
       font-weight: 700;
@@ -875,20 +871,21 @@
 
     .settings-section-title {
       margin: 0;
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
     .settings-section-copy {
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       color: var(--text-soft);
-      line-height: 1.7;
-      font-size: 14px;
+      line-height: 1.65;
+      font-size: 13px;
     }
 
     .setting-group {
       overflow: hidden;
+      box-shadow: var(--shadow-soft);
     }
 
     .setting-head {
@@ -898,17 +895,17 @@
       gap: 12px;
       width: 100%;
       text-align: left;
-      padding: 0;
-      background: transparent;
+      padding: 16px 18px;
+      background: var(--surface-strong);
     }
 
     .setting-head-text {
       display: grid;
-      gap: 6px;
+      gap: 4px;
     }
 
     .setting-name {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
@@ -920,8 +917,8 @@
     }
 
     .setting-body {
-      margin-top: 18px;
-      padding-top: 18px;
+      margin-top: 12px;
+      padding-top: 14px;
       border-top: 1px solid rgba(226, 232, 240, 0.92);
     }
 
@@ -2317,28 +2314,9 @@ function renderClientScript() {
               </div>
               <button class="hero-orb scan-button" data-action="start-home-scan">
                 <div class="hero-orb-state">
-                  <div class="hero-orb-mark">扫</div>
-                  <div class="hero-orb-label">\${target ? "一键智能扫描" : "选择文件夹开始"}</div>
-                  <div class="hero-orb-note">\${target ? "打开软件后，三步完成扫描与清理" : "先选择一个常用文件夹"}</div>
+                  <div class="hero-orb-label">一键智能扫描</div>
                 </div>
               </button>
-              <div class="hero-kpis">
-                <div class="hero-kpi-card">
-                  <div class="card-kicker">核心流程</div>
-                  <strong>3 步完成</strong>
-                  <span>选择目录、智能扫描、安全清理，全程围绕普通用户的最短路径设计。</span>
-                </div>
-                <div class="hero-kpi-card">
-                  <div class="card-kicker">安全策略</div>
-                  <strong>先隔离后处理</strong>
-                  <span>所有一键清理都会优先进入隔离区，给恢复和复查留出足够余地。</span>
-                </div>
-                <div class="hero-kpi-card">
-                  <div class="card-kicker">智能分析</div>
-                  <strong>\${appState.health.llm?.ok ? "AI 已连接" : "本地规则可用"}</strong>
-                  <span>\${escapeHtml(appState.health.llm?.ok ? "会结合 LLM 生成更易理解的清理建议。" : "即使未配置 LLM，也能先完成本地扫描和基础判断。")}</span>
-                </div>
-              </div>
               <div class="target-row">
                 <div class="target-card \${target ? "active" : ""}">
                   <div class="target-card-head">
@@ -2436,6 +2414,7 @@ function renderClientScript() {
                   <button class="button-primary warm" data-action="start-home-cleanup" \${cleanupItems.length ? "" : "disabled"}>一键清理</button>
                   <button class="button-secondary" data-action="rerun-home-scan">重新扫描</button>
                   <button class="button-subtle" data-action="switch-view" data-view="history">查看详情</button>
+                  <button class="button-subtle" data-action="home-reset">返回</button>
                 </div>
                 <p class="hero-tip">所有文件将先移动到隔离区，可随时恢复。当前一键清理仅优先处理低风险项，共 \${cleanupItems.length} 项。</p>
                 <div class="story-card">
@@ -2983,7 +2962,7 @@ function renderClientScript() {
       function renderSettingSection(sectionKey, title, copy, body) {
         const open = getActiveSettingsSection() === sectionKey;
         return \`
-          <section class="setting-card setting-group">
+          <section class="setting-card setting-group" style="margin-top:0;">
             <button class="setting-head" aria-expanded="\${open ? "true" : "false"}" data-action="switch-settings-section" data-section="\${sectionKey}">
               <div class="setting-head-text">
                 <span class="setting-name">\${escapeHtml(title)}</span>
@@ -3215,7 +3194,14 @@ function renderClientScript() {
 
         return [
           '<section class="settings-grid">',
+          '<div class="settings-section">',
+          '<header class="settings-section-header">',
+          '<p class="settings-section-kicker">当前设置分组</p>',
+          '<h3 class="settings-section-title">' + escapeHtml(current.title) + '</h3>',
+          '<p class="settings-section-copy">' + escapeHtml(current.copy) + '</p>',
+          '</header>',
           renderSettingSection(activeSection, current.title, current.copy, current.body),
+          '</div>',
           '</section>'
         ].join('');
       }
@@ -4009,6 +3995,9 @@ function renderClientScript() {
 
       function switchView(view) {
         appState.currentView = view;
+        if (view === "home" && !appState.activeTask) {
+          appState.home.status = "idle";
+        }
         writeLocalJson(STORAGE_KEYS.view, view);
         renderApp();
       }
