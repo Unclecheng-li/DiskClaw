@@ -1,7 +1,7 @@
 <div align="center">
 
 # 磁盘清理大虾
-<img width="200" height="129" alt="DisClaw logo" src="https://github.com/user-attachments/assets/59956242-a60e-4cac-aded-b0fb68d215b8" />
+
 > *安全、智能、说人话的磁盘清理 AI Agent。*
 
 [![Electron](https://img.shields.io/badge/Electron-37.x-blue)](https://www.electronjs.org/)
