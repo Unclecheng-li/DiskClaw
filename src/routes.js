@@ -55,6 +55,14 @@ export async function handleDiskClawRequest(request, response, services) {
       return;
     }
 
+    if (request.method?.toUpperCase() === "GET" && currentPathname.startsWith("/electron/icons/")) {
+      const iconName = path.basename(currentPathname);
+      const iconPath = path.join(appPaths.workspaceRoot, "electron", "icons", iconName);
+      const buffer = await fs.readFile(iconPath);
+      sendBinary(response, 200, buffer, "image/svg+xml");
+      return;
+    }
+
     if (key === "GET /api/health") {
       let llmHealth = { ok: false, reason: "LLM is not configured." };
 

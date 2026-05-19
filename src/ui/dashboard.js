@@ -174,16 +174,29 @@
     }
 
     .nav-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: rgba(15, 23, 42, 0.05);
-      font-size: 13px;
-      font-weight: 700;
       flex: 0 0 auto;
+    }
+
+    .nav-icon-svg {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: currentColor;
+    }
+
+    .nav-icon-svg svg {
+      width: 20px;
+      height: 20px;
+      display: block;
     }
 
     .nav-item.active .nav-icon {
@@ -789,16 +802,29 @@
     }
 
     .settings-nav-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: rgba(15, 23, 42, 0.06);
-      font-size: 12px;
-      font-weight: 700;
       flex: 0 0 auto;
+    }
+
+    .settings-nav-icon-svg {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: currentColor;
+    }
+
+    .settings-nav-icon-svg svg {
+      width: 20px;
+      height: 20px;
+      display: block;
     }
 
     .settings-nav-item.active .settings-nav-icon {
@@ -1645,14 +1671,14 @@ function renderClientScript() {
       };
 
       const SETTINGS_SECTIONS = [
-        { key: "basic", label: "基础设置", copy: "自动扫描、通知和默认目录。", icon: "基" },
-        { key: "llm", label: "LLM 配置", copy: "第三方模型接入与密钥。", icon: "AI" },
-        { key: "rules", label: "规则配置", copy: "扫描范围、白黑名单与阈值。", icon: "规" },
-        { key: "system", label: "系统设置", copy: "窗口、语言、更新与启动项。", icon: "系" },
-        { key: "data", label: "数据管理", copy: "备份、恢复和重置配置。", icon: "数" },
-        { key: "schedule", label: "计划任务", copy: "系统与用户计划任务管理。", icon: "计" },
-        { key: "update", label: "应用更新", copy: "检查版本与更新链接。", icon: "更" },
-        { key: "advanced", label: "高级设置", copy: "日志、调试与关于信息。", icon: "高" }
+        { key: "basic", label: "基础设置", copy: "自动扫描、通知和默认目录。", icon: "/electron/icons/settings/basic.svg" },
+        { key: "llm", label: "LLM 配置", copy: "第三方模型接入与密钥。", icon: "/electron/icons/settings/llm.svg" },
+        { key: "rules", label: "规则配置", copy: "扫描范围、白黑名单与阈值。", icon: "/electron/icons/settings/rules.svg" },
+        { key: "system", label: "系统设置", copy: "窗口、语言、更新与启动项。", icon: "/electron/icons/settings/system.svg" },
+        { key: "data", label: "数据管理", copy: "备份、恢复和重置配置。", icon: "/electron/icons/settings/data.svg" },
+        { key: "schedule", label: "计划任务", copy: "系统与用户计划任务管理。", icon: "/electron/icons/settings/schedule.svg" },
+        { key: "update", label: "应用更新", copy: "检查版本与更新链接。", icon: "/electron/icons/settings/update.svg" },
+        { key: "advanced", label: "高级设置", copy: "日志、调试与关于信息。", icon: "/electron/icons/settings/advanced.svg" }
       ];
 
       function normalizeSettingsSection(section) {
@@ -2120,23 +2146,6 @@ function renderClientScript() {
         return payload;
       }
 
-      function renderNavigation() {
-        const items = [
-          { view: "home", icon: "首", label: "首页" },
-          { view: "quarantine", icon: "隔", label: "隔离区" },
-          { view: "history", icon: "历", label: "清理历史" },
-          { view: "settings", icon: "设", label: "设置" }
-        ];
-
-        navMount.innerHTML = items.map((item) => {
-          const isActive = appState.currentView === item.view;
-          return '<button class="nav-item' + (isActive ? " active" : "") + '" data-action="switch-view" data-view="' + item.view + '">' +
-            '<span class="nav-icon">' + item.icon + "</span>" +
-            '<span>' + item.label + "</span>" +
-          "</button>";
-        }).join("");
-      }
-
       function renderTopbar() {
         const meta = VIEW_META[appState.currentView] || VIEW_META.home;
         const llmStatus = appState.health.llm?.ok
@@ -2254,6 +2263,47 @@ function renderClientScript() {
 
       function renderAppIcon(alt = "DiskClaw") {
         return '<img src="' + appIconPath + '" alt="' + escapeHtml(alt) + '">';
+      }
+
+      function renderNavIcon(view, label) {
+        const iconSvg = {
+          home: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 4l9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>',
+          quarantine: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M7 7V4h10v3"/><path d="M6 7h12v13H6z"/><path d="M10 11h4"/><path d="M10 15h4"/></svg>',
+          history: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/><path d="M8 5v4"/><path d="M16 10v4"/><path d="M12 15v4"/></svg>',
+          settings: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M19.4 15a1.8 1.8 0 0 0 .1-6l-1.8.5a6.7 6.7 0 0 0-1-1l.5-1.8a1.8 1.8 0 0 0-6-.1l-.5 1.8a6.7 6.7 0 0 0-1 1l-1.8-.5a1.8 1.8 0 0 0-.1 6l1.8.5a6.7 6.7 0 0 0 1 1l-.5 1.8a1.8 1.8 0 0 0 6 .1l.5-1.8a6.7 6.7 0 0 0 1-1z"/></svg>'
+        }[view] || "";
+        return '<span class="nav-icon-svg" aria-hidden="true">' + iconSvg + '</span>';
+      }
+
+      function renderSettingsNavIcon(iconPath, label) {
+        const iconSvg = {
+          "/electron/icons/settings/basic.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 4l9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>',
+          "/electron/icons/settings/llm.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M8 8v8"/><path d="M12 8v8"/><path d="M16 8v8"/></svg>',
+          "/electron/icons/settings/rules.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M7 7V4h10v3"/><path d="M6 7h12v13H6z"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>',
+          "/electron/icons/settings/system.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M19.4 15a1.8 1.8 0 0 0 .1-6l-1.8.5a6.7 6.7 0 0 0-1-1l.5-1.8a1.8 1.8 0 0 0-6-.1l-.5 1.8a6.7 6.7 0 0 0-1 1l-1.8-.5a1.8 1.8 0 0 0-.1 6l1.8.5a6.7 6.7 0 0 0 1 1l-.5 1.8a1.8 1.8 0 0 0 6 .1l.5-1.8a6.7 6.7 0 0 0 1-1z"/></svg>',
+          "/electron/icons/settings/data.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>',
+          "/electron/icons/settings/schedule.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/><path d="M12 4V2"/><path d="M12 22v-2"/><path d="M4 12H2"/><path d="M22 12h-2"/></svg>',
+          "/electron/icons/settings/update.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M19 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5"/><path d="M5 20v-5h5"/></svg>',
+          "/electron/icons/settings/advanced.svg": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/><path d="M8 5v4"/><path d="M12 10v4"/><path d="M16 15v4"/></svg>'
+        }[iconPath] || '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/></svg>';
+        return '<span class="settings-nav-icon-svg" aria-hidden="true">' + iconSvg + '</span>';
+      }
+
+      function renderNavigation() {
+        const items = [
+          { view: "home", label: "首页" },
+          { view: "quarantine", label: "隔离区" },
+          { view: "history", label: "清理历史" },
+          { view: "settings", label: "设置" }
+        ];
+
+        navMount.innerHTML = items.map((item) => {
+          const isActive = appState.currentView === item.view;
+          return '<button class="nav-item' + (isActive ? " active" : "") + '" data-action="switch-view" data-view="' + item.view + '">' +
+            '<span class="nav-icon">' + renderNavIcon(item.view, item.label) + "</span>" +
+            '<span>' + item.label + "</span>" +
+          "</button>";
+        }).join("");
       }
 
       function renderHomeIdle(target) {
@@ -3209,7 +3259,7 @@ function renderClientScript() {
             '<div class="settings-nav-list">' +
               SETTINGS_SECTIONS.map((item) =>
                 '<button class="settings-nav-item' + (item.key === activeSection ? ' active' : '') + '" data-action="switch-settings-section" data-section="' + escapeHtml(item.key) + '">' +
-                  '<span class="settings-nav-icon">' + escapeHtml(item.icon) + '</span>' +
+                  '<span class="settings-nav-icon">' + renderSettingsNavIcon(item.icon, item.label) + '</span>' +
                   '<span class="settings-nav-text">' +
                     '<span class="settings-nav-label">' + escapeHtml(item.label) + '</span>' +
                     '<span class="settings-nav-copy">' + escapeHtml(item.copy) + '</span>' +
