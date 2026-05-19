@@ -1,0 +1,22 @@
+{
+  "llm": {
+    "enabled": true,
+    "provider": "openai-compatible",
+    "baseUrl": "https://api.openai.com/v1",
+    "apiKey": "sk-your-api-key",
+    "models": {
+      "chat": "gpt-4.1-mini",
+      "reason": "gpt-4.1",
+      "summary": "gpt-4.1-mini"
+    },
+    "timeoutMs": 20000,
+    "maxRetries": 1,
+    "temperature": 0.2
+  },
+  "scan": {
+    "maxDepth": 5,
+    "maxFiles": 3000,
+    "largeFileThresholdBytes": 536870912,
+    "staleDays": 90
+  }
+}

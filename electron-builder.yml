@@ -1,0 +1,43 @@
+appId: com.diskclaw.agent
+productName: 磁盘清理大虾
+copyright: Copyright © 2026 DiskClaw Team
+asar: true
+npmRebuild: false
+
+directories:
+  output: dist
+  buildResources: electron
+
+files:
+  - electron/**
+  - src/**
+  - package.json
+  - README.md
+  - config.example.json
+
+extraMetadata:
+  main: electron/main.js
+
+protocols:
+  - name: DiskClaw
+    schemes:
+      - diskclaw
+
+win:
+  icon: electron/icon.ico
+  executableName: DiskClaw
+  target:
+    - target: nsis
+      arch:
+        - x64
+  artifactName: DiskClaw-Setup-${version}.${ext}
+  legalTrademarks: DiskClaw
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: 磁盘清理大虾
+  include: electron/installer.nsh

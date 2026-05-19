@@ -1,0 +1,7 @@
+.diskclaw/
+.npm-cache/
+dist/
+release/
+node_modules/
+coverage/
+*.log

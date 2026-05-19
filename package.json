@@ -1,0 +1,26 @@
+{
+  "name": "diskclaw-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.js",
+  "author": "DiskClaw Team",
+  "homepage": "https://diskclaw.local",
+  "description": "DiskClaw MVP backend for disk cleanup agent orchestration and third-party LLM API integration.",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node scripts/run-tests.js",
+    "electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist:win": "electron-builder --win nsis",
+    "verify:release": "node scripts/verify-release.js",
+    "demo:prepare": "node scripts/create-demo-data.js",
+    "smoke:e2e": "node scripts/smoke-demo-flow.js",
+    "smoke:desktop": "node scripts/smoke-desktop-app.js"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.8.1"
+  }
+}
