@@ -19,7 +19,7 @@
       --radius-lg: 24px;
       --radius-md: 16px;
       --radius-sm: 12px;
-      --sidebar-width: 240px;
+      --sidebar-width: 280px;
       --transition: 220ms ease;
     }
 
@@ -95,7 +95,7 @@
       background: rgba(255, 255, 255, 0.94);
       border-right: 1px solid rgba(226, 232, 240, 0.8);
       box-shadow: 12px 0 28px rgba(15, 23, 42, 0.04);
-      padding: 28px 20px 20px;
+      padding: 28px 22px 20px;
       display: flex;
       flex-direction: column;
       gap: 28px;
@@ -106,13 +106,14 @@
 
     .brand {
       display: flex;
-      align-items: center;
-      gap: 14px;
+      align-items: flex-start;
+      gap: 16px;
+      min-width: 0;
     }
 
     .brand-badge {
-      width: 52px;
-      height: 52px;
+      width: 60px;
+      height: 60px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.98);
       display: inline-flex;
@@ -120,7 +121,8 @@
       justify-content: center;
       box-shadow: 0 12px 24px rgba(16, 185, 129, 0.22);
       overflow: hidden;
-      padding: 4px;
+      padding: 6px;
+      flex: 0 0 auto;
     }
 
     .brand-badge img {
@@ -132,9 +134,10 @@
 
     .brand-title {
       margin: 0;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     .brand-copy {
@@ -142,6 +145,14 @@
       color: var(--text-soft);
       font-size: 13px;
       line-height: 1.5;
+      max-width: 210px;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 3px;
+      min-width: 0;
+      padding-top: 2px;
     }
 
     .nav-list {
@@ -152,10 +163,10 @@
     .nav-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       width: 100%;
-      padding: 14px 16px;
-      border-radius: 16px;
+      padding: 15px 18px;
+      border-radius: 18px;
       background: transparent;
       color: var(--text);
       text-align: left;
@@ -174,8 +185,8 @@
     }
 
     .nav-icon {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 14px;
       display: inline-flex;
       align-items: center;
@@ -185,8 +196,8 @@
     }
 
     .nav-icon-svg {
-      width: 20px;
-      height: 20px;
+      width: 21px;
+      height: 21px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -194,9 +205,15 @@
     }
 
     .nav-icon-svg svg {
-      width: 20px;
-      height: 20px;
+      width: 21px;
+      height: 21px;
       display: block;
+    }
+
+    .nav-item > span:last-child {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .nav-item.active .nav-icon {
@@ -5173,7 +5190,7 @@ export function renderDashboardHtml() {
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-badge"><img src="/electron/icon.png" alt="DiskClaw 图标"></div>
-        <div>
+        <div class="brand-text">
           <h1 class="brand-title">磁盘清理大虾</h1>
           <p class="brand-copy">像专家一样找出空间黑洞，像助手一样安全完成清理。</p>
         </div>
